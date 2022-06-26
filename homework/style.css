@@ -1,3 +1,38 @@
 .alert-error {
-    color: red;
+  color: red;
+}
+
+.header {
+  height: 80px;
+  width: 40%;
+  background-color: aqua;
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.select {
+  height: 30px;
+  width: 150px;
+}
+
+.headerText {
+  width: 330px;
+  margin-right: 50px;
+  margin-left: 20px;
+}
+
+.container {
+  height: 235px;
+  width: 400px;
+  background-color: aqua;
+}
+
+.contributors {
+  width: 400px;
+}
+
+.contributors img {
+  height: 100px;
+  width: 100px;
 }
