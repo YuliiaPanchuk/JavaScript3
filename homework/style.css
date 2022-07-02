@@ -2,6 +2,11 @@
   color: red;
 }
 
+li {
+  list-style: none;
+  margin-top: 10px;
+}
+
 .header {
   height: 80px;
   width: 40%;
@@ -23,16 +28,58 @@
 }
 
 .container {
-  height: 235px;
-  width: 400px;
-  background-color: aqua;
+  width: 40%;
+  margin: 0 auto;
+  margin-top: 10px;
 }
 
 .contributors {
-  width: 400px;
+  background-color: aquamarine;
+  flex: 1;
 }
 
-.contributors img {
-  height: 100px;
-  width: 100px;
+.contributor {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.contributor li {
+  margin: 20px;
+  border: 1px solid black;
+  padding: 10px;
+}
+
+.contributor p {
+  display: inline-flex;
+  margin-left: 60px;
+  border: 1px solid black;
+  padding: 10px;
+  border-radius: 10px;
+  height: 22px;
+}
+
+.profileButton {
+  width: 80px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.avatarImg {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+
+.dataDiv {
+  gap: 15px;
+}
+
+.dataContr {
+  background-color: rgb(227, 200, 168);
+  flex: 1;
+}
+
+.dataContr li {
+  margin-right: 10px;
 }

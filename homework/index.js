@@ -48,11 +48,11 @@
             const element = dataVar[x];
             element.style.display = "none";
           }
-
-          document.getElementById(e.target.value).style.display = "block"
+          document.getElementById(e.target.value).style.display = "flex"
           //console.log(e.target.value);
         })
         const container = createAndAppend("div", root, { class: "container" })
+
 
         for (let i = 0; i < data.length; i++) {
           const element = data[i];
@@ -62,17 +62,31 @@
           const dataDiv = createAndAppend("div", container, { class: name, class: "dataDiv", id: i })
           dataDiv.style.display = "none";
 
+          const dataRepo = createAndAppend("div", dataDiv, { class: "dataRepo" })
+
+          const table = createAndAppend("table", dataRepo)
+          const tbody = createAndAppend("tbody", table)
+          const tr = createAndAppend("tr", tbody)
+
+          const tdRepo = createAndAppend("td", tr, { class: "label", text: "Repository: " }) // creating TD for REpo
+          const tdRepoLink = createAndAppend("td", tr)
+
           const repository = element.svn_url;
-          const repo = createAndAppend("a", dataDiv, { class: "repository", text: name, href: repository })
+          const repo = createAndAppend("a", tdRepoLink, { class: "repository", text: name, href: repository, target: "_blank" }) // creating a link inside TD
 
           const descriptions = element.description;
-          const description = createAndAppend("p", dataDiv, { class: "describtion", text: descriptions }) // if(description === null) return display: none
+          const trDescription = createAndAppend("tr", tbody)
+          const tdDescr = createAndAppend("td", trDescription, { text: "Description: " })
+          const tdDescription = createAndAppend("td", trDescription, { text: descriptions })
 
           const forks = element.forks_count;
-          const fork = createAndAppend("p", dataDiv, { class: "fork", text: forks })
+          const trFork = createAndAppend("tr", tbody)
+          const fork = createAndAppend("td", trFork, { text: "Forks: " + forks })
 
           const updated = element.updated_at;
-          const update = createAndAppend("p", dataDiv, { class: "updated", text: updated })
+          const trUpdate = createAndAppend("tr", tbody)
+          const update = createAndAppend("td", trUpdate, { text: "Updated: " })
+          const tdUpdate = createAndAppend("td", trUpdate, { text: updated })
 
           fetchJSON(element.contributors_url, (error, contributors) => {
             if (error) {
@@ -84,8 +98,22 @@
               for (let j = 0; j < contributors.length; j++) {
                 const el = contributors[j];
 
+                const contributor = createAndAppend("div", contibutorDiv, { class: "contributor" })
+
                 const avatars = el.avatar_url;
-                const avatar = createAndAppend("img", contibutorDiv, { src: avatars, class: "avatarImg" })
+                const avatar = createAndAppend("img", contributor, { src: avatars, class: "avatarImg" })
+
+                const listItem = createAndAppend("li", contributor)
+
+                const profiles = el.html_url;
+                const profile = createAndAppend("a", listItem, { text: "My profile", class: "profileButton", href: profiles, target: "_blank" })
+
+                const logIn = el.login;
+                const login = createAndAppend("li", contributor, { text: logIn })
+
+                const contribution = el.contributions;
+                const contributions = createAndAppend("li", contributor, { text: contribution })
+
               }
             }
           })
